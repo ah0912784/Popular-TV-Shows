@@ -1,17 +1,42 @@
+//Alexnader Hansen
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header v-bind:text=headerString></Header>
+   
+    <Card v-for="show in shows" v-bind:key="show.id" v-bind:obj="show" ></Card>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/Header.vue'
+import Card from './components/Card.vue'
+import axios from 'axios'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Card,
+    Header
+  },
+  data() {
+    return {
+    headerString: "Popular Tv Shows!",
+    shows: [],
+    limit: 4,
+    }
+  },
+ 
+  mounted() {
+    //API Key 4512e0cae0fc17c86d57be7d9a8cd524
+    axios.get('https://api.themoviedb.org/3/tv/popular?api_key=4512e0cae0fc17c86d57be7d9a8cd524&language=en-US&page=1') 
+    .then((response) => {
+      //console.log(response.data.results)
+
+     this.shows = response.data
+      
+    })
+
   }
 }
 </script>
