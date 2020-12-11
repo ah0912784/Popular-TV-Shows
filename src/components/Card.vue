@@ -1,12 +1,12 @@
 //Alexander Hansen
 <template>
-    <div class="card" style="width: 18rem;">
-  <img :src="imgsrc"  class="card-img-top" alt:{{obj.name}}>
+  <div class="card" style="width: 18rem;" id="card">   
+  <img :src="imgsrc"  class="card-img-top" :alt=obj.name>
   <div class="card-body">
-    <h5 class="card-title">{{ obj.title }}</h5>
+    <h5 class="card-title"><b>{{ obj.name }}</b></h5>
     <p class="card-text">{{obj.overview}}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
+    
+  </div> 
 </div>
 </template>
 <script>
@@ -21,3 +21,16 @@ export default {
     }},
 }
 </script>
+<style scoped>
+#card{
+margin: 5px;
+display: inline-block;
+vertical-align: top;
+border-block: 2px solid black;
+border-right: 1px solid black;
+border-left: 1px solid black;
+}
+p{
+  height: 200px;
+}
+</style>
